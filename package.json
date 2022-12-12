@@ -1,0 +1,19 @@
+{
+  "name": "hasm2hnary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivendrarox/hasm2hnary.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shivendrarox/hasm2hnary/issues"
+  },
+  "homepage": "https://github.com/shivendrarox/hasm2hnary#readme"
+}
