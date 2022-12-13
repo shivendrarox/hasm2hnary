@@ -12,7 +12,7 @@ const DEST_TABLE = {
     ADM: "111",//A register, D register, and RAM[A]
 }
 
-function dest(destMnemonic){
+export function dest(destMnemonic){
     // Returns the binary code of the dest mnemonic.
     return DEST_TABLE[destMnemonic]
 }
@@ -48,7 +48,7 @@ const COMP_TABLE = {
     "D|M":"010101",
 }
 
-function comp(compMnemonic){
+export function comp(compMnemonic){
  return COMP_TABLE[compMnemonic]
 }
 
@@ -63,6 +63,6 @@ const JUMP_TABLE={
     "JMP":"111",//Unconditional jump
 }
 
-function jump(jumpMnemonic){
+export function jump(jumpMnemonic){
     return JUMP_TABLE[jumpMnemonic]
 }
