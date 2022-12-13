@@ -18,7 +18,6 @@ function dest(destMnemonic){
 }
 
 const COMP_TABLE = {
-
     ":0":"101010",
     ":1":"111111",
     "-1":"111010",
@@ -53,3 +52,17 @@ function comp(compMnemonic){
  return COMP_TABLE[compMnemonic]
 }
 
+const JUMP_TABLE={
+    "null":"000",//no jump
+    "JGT":"001",//if comp > 0jump
+    "JEQ":"010",//if comp = 0jump
+    "JGE":"011",//if comp ≥ 0jump
+    "JLT":"100",//if comp < 0jump
+    "JNE":"101",//if comp ≠ 0jump
+    "JLE":"110",//if comp ≤ 0jump
+    "JMP":"111",//Unconditional jump
+}
+
+function jump(jumpMnemonic){
+    return JUMP_TABLE[jumpMnemonic]
+}
