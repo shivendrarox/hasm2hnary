@@ -1,4 +1,4 @@
-import { SymbolTable } from "./SymbolTable"
+import { SymbolTable } from "./SymbolTable.js"
 
 //
 export class Parser{

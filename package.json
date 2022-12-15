@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/shivendrarox/hasm2hnary/issues"
   },
-  "homepage": "https://github.com/shivendrarox/hasm2hnary#readme"
+  "homepage": "https://github.com/shivendrarox/hasm2hnary#readme",
+  "dependencies": {
+    "n-readlines": "^1.0.1"
+  }
 }
