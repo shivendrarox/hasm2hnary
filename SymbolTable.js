@@ -1,7 +1,6 @@
 // SymbolTable Class
 export class SymbolTable{
     #table
-    #lastAddress
     constructor(){
         this.#table = {
             'R0':0,
@@ -28,7 +27,6 @@ export class SymbolTable{
             'THIS':3,
             'THAT':4,
         }
-        this.#lastAddress = 16
     }
     addEntry(symbol,address){
         this.#table[symbol] = parseInt(address)
