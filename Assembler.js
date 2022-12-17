@@ -5,8 +5,8 @@ import  lineByLine from 'n-readlines';
 
 let line;
 let lineNumber = 0;
-const INPUT_FILE = './rect/Rect.asm'
-const OUTPUT_FILE="./rect/Rect.txt"
+const INPUT_FILE = './add/Add.asm'
+const OUTPUT_FILE="./add/Add.HACK"
 const liner = new lineByLine(INPUT_FILE);
 const parser = new Parser()
 
