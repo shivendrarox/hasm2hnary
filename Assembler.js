@@ -5,7 +5,9 @@ import  lineByLine from 'n-readlines';
 
 let line;
 let lineNumber = 0;
-const liner = new lineByLine('./max/Max.asm');
+const INPUT_FILE = './rect/Rect.asm'
+const OUTPUT_FILE="./rect/Rect.txt"
+const liner = new lineByLine(INPUT_FILE);
 const parser = new Parser()
 
 //Phase 1:
@@ -35,8 +37,8 @@ const parser = new Parser()
     lineNumber++;
 }
 //Phase 2
-var stream = fs.createWriteStream("./max/Max.txt", {flags:'a'});
-const linerPhase2 = new lineByLine('./max/Max.asm');
+var stream = fs.createWriteStream(OUTPUT_FILE, {flags:'a'});
+const linerPhase2 = new lineByLine(INPUT_FILE);
 line=0
 while (line = linerPhase2.next()) {
     const command = line.toString('ascii').replaceAll(/\s/g,'').replaceAll(/\/\*[\s\S]*?\*\/|\/\/.*/g,'').trim();
