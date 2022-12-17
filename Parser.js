@@ -48,22 +48,21 @@ export class Parser{
         if(this.#symbolTable.contains(saneSymbol)){
             return this.#symbolTable.GetAddress(saneSymbol)
         }else{
-            let targetAddr=0
             switch (this.commandType()) {
                 case 'C_COMMAND':
                     console.log("C_OMMAND")
                     return "C_OMMAND";
                 case 'A_COMMAND':
-                    // targetAddr = this.#nextAvailableRAMAddress
+                    // this.#symbolTable.addEntry(saneSymbol,this.#nextAvailableRAMAddress)
                     // this.#nextAvailableRAMAddress+=1
                     // break
                     console.log("A_COMMAND")
                     return "A_COMMAND";
                 case 'L_COMMAND':
-                    targetAddr=this.#labelROMAddrCounter
+                    this.#symbolTable.addEntry(saneSymbol,this.#labelROMAddrCounter)
                     break;
               }
-           this.#symbolTable.addEntry(saneSymbol,targetAddr)
+           
            return this.#symbolTable.GetAddress(saneSymbol)
         }
         
