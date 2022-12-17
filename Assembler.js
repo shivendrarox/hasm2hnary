@@ -6,7 +6,7 @@ import  lineByLine from 'n-readlines';
 let line;
 let lineNumber = 0;
 const INPUT_FILE = './add/Add.asm'
-const OUTPUT_FILE="./add/Add.HACK"
+const OUTPUT_FILE="./hack_output/Add.hack"
 const liner = new lineByLine(INPUT_FILE);
 const parser = new Parser()
 

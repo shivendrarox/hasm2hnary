@@ -41,9 +41,7 @@ export class Parser{
     }
     symbol(){
         const saneSymbol = this.#currentCommand.replaceAll(/(\(|\))|\@/g,'')
-        if(/^-?\d+$/.test(saneSymbol)){
-            return
-        }
+
 
         if(this.#symbolTable.contains(saneSymbol)){
             return this.#convertNum2BinaryStr(this.#symbolTable.GetAddress(saneSymbol))
@@ -54,6 +52,9 @@ export class Parser{
                     const BIN_C_COMMAND = this.#translateCInstruction(saneSymbol)
                     return BIN_C_COMMAND;
                 case 'A_COMMAND':
+                    if(/^-?\d+$/.test(saneSymbol)){
+                        return this.#convertNum2BinaryStr(Number(saneSymbol))
+                    }
                     const binAddress = this.#convertNum2BinaryStr(this.#nextAvailableRAMAddress)
                     this.#symbolTable.addEntry(saneSymbol,binAddress)
                     this.#nextAvailableRAMAddress+=1
