@@ -2,14 +2,14 @@
 
 //instruction anatomy: 1 - - c1 c2 c3 c4 c5 c6 d1 d2 d3 j1 j2 j3
 const DEST_TABLE = {
-    null: "000",//the value is not stored
-    M: "001",//RAM[A]
-    D: "010",//D register
-    DM: "011",//D register and RAM[A]
-    A:"100",//A register
-    AM: "101",//A register and RAM[A]
-    AD: "110",//A register and D register
-    ADM: "111",//A register, D register, and RAM[A]
+    'null': "000",//the value is not stored
+    'M': "001",//RAM[A]
+    'D': "010",//D register
+    'DM': "011",//D register and RAM[A]
+    'A':"100",//A register
+    'AM': "101",//A register and RAM[A]
+    'AD': "110",//A register and D register
+    'ADM': "111",//A register, D register, and RAM[A]
 }
 
 export function dest(destMnemonic){
@@ -18,8 +18,8 @@ export function dest(destMnemonic){
 }
 
 const COMP_TABLE = {
-    ":0":"101010",
-    ":1":"111111",
+    "0":"101010",
+    "1":"111111",
     "-1":"111010",
     "D":"001100",
     "A":"110000",

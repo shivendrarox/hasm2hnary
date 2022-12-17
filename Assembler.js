@@ -6,9 +6,8 @@ import  lineByLine from 'n-readlines';
 let line;
 let lineNumber = 0;
 const liner = new lineByLine('./max/Max.asm');
-var stream = fs.createWriteStream("./max/Max.txt", {flags:'a'});
-
 const parser = new Parser()
+
 //Phase 1:
   while (line = liner.next()) {
     const command = line.toString('ascii').replaceAll(/\s/g,'').replaceAll(/\/\*[\s\S]*?\*\/|\/\/.*/g,'').trim();
@@ -36,5 +35,20 @@ const parser = new Parser()
     lineNumber++;
 }
 //Phase 2
+var stream = fs.createWriteStream("./max/Max.txt", {flags:'a'});
+while (line = liner.next()) {
+    const command = line.toString('ascii').replaceAll(/\s/g,'').replaceAll(/\/\*[\s\S]*?\*\/|\/\/.*/g,'').trim();
+    if(command===''||parser.commandType()==='L_COMMAND'){
+        continue
+    }
+
+    parser.setCurrentCommand(command)
+
+    const translatedBinaryStr = parser.symbol();
+    //console.log(lineNumber+" :",translatedBinaryStr)
+    //Phase 2: All commands translated, write the file
+    stream.write(translatedBinaryStr + "\n");
+    lineNumber++;
+}
 stream.end();
  

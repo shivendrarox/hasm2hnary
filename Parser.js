@@ -51,7 +51,7 @@ export class Parser{
             switch (this.commandType()) {
                 case 'C_COMMAND':
                     //compute from CodeModule
-                    const BIN_C_COMMAND = 'WTF'
+                    const BIN_C_COMMAND = this.#translateCInstruction(saneSymbol)
                     return BIN_C_COMMAND;
                 case 'A_COMMAND':
                     // this.#symbolTable.addEntry(saneSymbol,this.#nextAvailableRAMAddress)
@@ -65,5 +65,22 @@ export class Parser{
            return this.#symbolTable.GetAddress(saneSymbol)
         }
         
+    }
+    
+    #translateCInstruction(c_instruction){
+        //DEST=COMP;JMP
+        const c_instructionArr = c_instruction.split(/\=|\;/g)
+
+        const DEST = c_instructionArr[0]
+        const COMP =  c_instruction.includes('=')? c_instructionArr[1]:null
+        const JMP =  c_instruction.includes('=')? c_instructionArr[2]??null:c_instructionArr[1]
+
+       let a = 0
+       if(COMP.includes('M')){
+           a=1
+       } 
+       //Binary syntax:     1 1 1 a c c c c c c d d d j j j
+       const finalBinary = '111'+ a+comp(COMP)+ dest(DEST) + jump(JMP)
+       return finalBinary
     }
 }
