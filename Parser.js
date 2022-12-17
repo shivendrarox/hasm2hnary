@@ -1,5 +1,5 @@
 import { SymbolTable } from "./SymbolTable.js"
-
+import  {dest,jump,comp}  from "./CodeModule.js"
 //
 export class Parser{
     #currentCommand
@@ -50,14 +50,13 @@ export class Parser{
         }else{
             switch (this.commandType()) {
                 case 'C_COMMAND':
-                    console.log("C_OMMAND")
-                    return "C_OMMAND";
+                    //compute from CodeModule
+                    const BIN_C_COMMAND = 'WTF'
+                    return BIN_C_COMMAND;
                 case 'A_COMMAND':
                     // this.#symbolTable.addEntry(saneSymbol,this.#nextAvailableRAMAddress)
                     // this.#nextAvailableRAMAddress+=1
-                    // break
-                    console.log("A_COMMAND")
-                    return "A_COMMAND";
+                    break; 
                 case 'L_COMMAND':
                     this.#symbolTable.addEntry(saneSymbol,this.#labelROMAddrCounter)
                     break;

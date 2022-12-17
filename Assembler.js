@@ -1,11 +1,7 @@
 //hasm2hnary: Hack ASM to Hack Binary assembler
-import  {dest,jump,comp}  from "./CodeModule.js"
 import { Parser } from "./Parser.js"
 import fs from 'fs'
 import  lineByLine from 'n-readlines';
-// console.log(dest("M"))//001
-// console.log(jump("JEQ"))//010
-// console.log(comp("-A"))//11 00 11
 
 let line;
 let lineNumber = 0;
@@ -13,6 +9,7 @@ const liner = new lineByLine('./max/Max.asm');
 var stream = fs.createWriteStream("./max/Max.txt", {flags:'a'});
 
 const parser = new Parser()
+//Phase 1:
   while (line = liner.next()) {
     const command = line.toString('ascii').replaceAll(/\s/g,'').replaceAll(/\/\*[\s\S]*?\*\/|\/\/.*/g,'').trim();
     if(command===''){
@@ -33,9 +30,11 @@ const parser = new Parser()
             translatedBinaryStr =  parser.symbol()
             break;
       }
-
-    stream.write(translatedBinaryStr + "\n");
+    console.log(lineNumber+" :",translatedBinaryStr)
+    //Phase 1: All L_COMMANDS parsed, no need to write
+    //stream.write(translatedBinaryStr + "\n");
     lineNumber++;
 }
+//Phase 2
 stream.end();
  
