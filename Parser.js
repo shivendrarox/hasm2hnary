@@ -51,13 +51,16 @@ export class Parser{
             let targetAddr=0
             switch (this.commandType()) {
                 case 'C_COMMAND':
-                    console.log("WTF??C_OMMAND")
-                    return;
-                // case 'A_COMMAND':
-                //     targetAddr = this.#nextAvailableRAMAddress
-                //     this.#nextAvailableRAMAddress+=1
+                    console.log("C_OMMAND")
+                    return "C_OMMAND";
+                case 'A_COMMAND':
+                    // targetAddr = this.#nextAvailableRAMAddress
+                    // this.#nextAvailableRAMAddress+=1
+                    // break
+                    console.log("A_COMMAND")
+                    return "A_COMMAND";
                 case 'L_COMMAND':
-                    targetAddr=this.#labelROMAddrCounter+1
+                    targetAddr=this.#labelROMAddrCounter
                     break;
               }
            this.#symbolTable.addEntry(saneSymbol,targetAddr)

@@ -25,9 +25,9 @@ const parser = new Parser()
     }
 
     parser.setCurrentCommand(command)
-    if(!parser.symbol()){
-        continue
-    }
+    // if(!parser.symbol()){ //omitting A_COMMAND
+    //     continue
+    // }
     const translatedBinaryStr =  parser.symbol()
     stream.write(translatedBinaryStr + "\n");
     lineNumber++;
