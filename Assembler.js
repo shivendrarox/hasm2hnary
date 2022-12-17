@@ -5,8 +5,8 @@ import  lineByLine from 'n-readlines';
 
 let line;
 let lineNumber = 0;
-const INPUT_FILE = './pong/Pong.asm'
-const OUTPUT_FILE="./hack_output/Pong.hack"
+const INPUT_FILE = './rect/Rect.asm'
+const OUTPUT_FILE="./hack_output/Rect.hack"
 const liner = new lineByLine(INPUT_FILE);
 const parser = new Parser()
 
