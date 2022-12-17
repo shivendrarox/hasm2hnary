@@ -44,7 +44,11 @@ export class Parser{
 
 
         if(this.#symbolTable.contains(saneSymbol)){
-            return this.#convertNum2BinaryStr(Number(this.#symbolTable.GetAddress(saneSymbol)))
+            if((typeof this.#symbolTable.GetAddress(saneSymbol))==='number'){
+                return this.#convertNum2BinaryStr(this.#symbolTable.GetAddress(saneSymbol))
+            }else{
+                return this.#symbolTable.GetAddress(saneSymbol)
+            }
         }else{
             switch (this.commandType()) {
                 case 'C_COMMAND':
