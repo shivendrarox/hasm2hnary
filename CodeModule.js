@@ -5,11 +5,11 @@ const DEST_TABLE = {
     'null': "000",//the value is not stored
     'M': "001",//RAM[A]
     'D': "010",//D register
-    'DM': "011",//D register and RAM[A]
+    'MD': "011",//D register and RAM[A]
     'A':"100",//A register
     'AM': "101",//A register and RAM[A]
     'AD': "110",//A register and D register
-    'ADM': "111",//A register, D register, and RAM[A]
+    'AMD': "111",//A register, D register, and RAM[A]
 }
 
 export function dest(destMnemonic){

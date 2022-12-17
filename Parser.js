@@ -44,7 +44,7 @@ export class Parser{
 
 
         if(this.#symbolTable.contains(saneSymbol)){
-            return this.#convertNum2BinaryStr(this.#symbolTable.GetAddress(saneSymbol))
+            return this.#convertNum2BinaryStr(Number(this.#symbolTable.GetAddress(saneSymbol)))
         }else{
             switch (this.commandType()) {
                 case 'C_COMMAND':
@@ -55,12 +55,13 @@ export class Parser{
                     if(/^-?\d+$/.test(saneSymbol)){
                         return this.#convertNum2BinaryStr(Number(saneSymbol))
                     }
-                    const binAddress = this.#convertNum2BinaryStr(this.#nextAvailableRAMAddress)
-                    this.#symbolTable.addEntry(saneSymbol,binAddress)
+                    const binRAMAddress = this.#convertNum2BinaryStr(this.#nextAvailableRAMAddress)
+                    this.#symbolTable.addEntry(saneSymbol,binRAMAddress)
                     this.#nextAvailableRAMAddress+=1
                     break; 
                 case 'L_COMMAND':
-                    this.#symbolTable.addEntry(saneSymbol,this.#labelROMAddrCounter)
+                    const binROMAddress = (this.#labelROMAddrCounter)
+                    this.#symbolTable.addEntry(saneSymbol,binROMAddress)
                     break;
               }
            

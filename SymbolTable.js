@@ -29,7 +29,7 @@ export class SymbolTable{
         }
     }
     addEntry(symbol,address){
-        this.#table[symbol] = parseInt(address)
+        this.#table[symbol] = address
     }
 
     contains(symbol){

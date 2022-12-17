@@ -5,8 +5,8 @@ import  lineByLine from 'n-readlines';
 
 let line;
 let lineNumber = 0;
-const INPUT_FILE = './add/Add.asm'
-const OUTPUT_FILE="./hack_output/Add.hack"
+const INPUT_FILE = './pong/PongTEST.asm'
+const OUTPUT_FILE="./hack_output/Pong.hack"
 const liner = new lineByLine(INPUT_FILE);
 const parser = new Parser()
 
@@ -31,7 +31,7 @@ const parser = new Parser()
             translatedBinaryStr =  parser.symbol()
             break;
       }
-    console.log(lineNumber+" :",translatedBinaryStr)
+    //console.log(lineNumber+" :",translatedBinaryStr)
     //Phase 1: All L_COMMANDS parsed, no need to write
     //stream.write(translatedBinaryStr + "\n");
     lineNumber++;
