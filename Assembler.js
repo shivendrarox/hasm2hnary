@@ -36,14 +36,17 @@ const parser = new Parser()
 }
 //Phase 2
 var stream = fs.createWriteStream("./max/Max.txt", {flags:'a'});
-while (line = liner.next()) {
+const linerPhase2 = new lineByLine('./max/Max.asm');
+line=0
+while (line = linerPhase2.next()) {
     const command = line.toString('ascii').replaceAll(/\s/g,'').replaceAll(/\/\*[\s\S]*?\*\/|\/\/.*/g,'').trim();
-    if(command===''||parser.commandType()==='L_COMMAND'){
+    if(command===''){
         continue
     }
-
     parser.setCurrentCommand(command)
-
+    if(parser.commandType()==='L_COMMAND'){
+        continue
+    }
     const translatedBinaryStr = parser.symbol();
     //console.log(lineNumber+" :",translatedBinaryStr)
     //Phase 2: All commands translated, write the file

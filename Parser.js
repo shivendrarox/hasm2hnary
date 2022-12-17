@@ -54,8 +54,8 @@ export class Parser{
                     const BIN_C_COMMAND = this.#translateCInstruction(saneSymbol)
                     return BIN_C_COMMAND;
                 case 'A_COMMAND':
-                    // this.#symbolTable.addEntry(saneSymbol,this.#nextAvailableRAMAddress)
-                    // this.#nextAvailableRAMAddress+=1
+                    this.#symbolTable.addEntry(saneSymbol,this.#nextAvailableRAMAddress)
+                    this.#nextAvailableRAMAddress+=1
                     break; 
                 case 'L_COMMAND':
                     this.#symbolTable.addEntry(saneSymbol,this.#labelROMAddrCounter)
@@ -71,16 +71,16 @@ export class Parser{
         //DEST=COMP;JMP
         const c_instructionArr = c_instruction.split(/\=|\;/g)
 
-        const DEST = c_instructionArr[0]
-        const COMP =  c_instruction.includes('=')? c_instructionArr[1]:null
+        const DEST = c_instruction.includes('=')? c_instructionArr[0]:null
+        const COMP =  c_instruction.includes('=')? c_instructionArr[1]:c_instructionArr[0]
         const JMP =  c_instruction.includes('=')? c_instructionArr[2]??null:c_instructionArr[1]
 
        let a = 0
-       if(COMP.includes('M')){
+       if(COMP?.includes('M')){
            a=1
        } 
-       //Binary syntax:     1 1 1 a c c c c c c d d d j j j
-       const finalBinary = '111'+ a+comp(COMP)+ dest(DEST) + jump(JMP)
+       //Binary syntax:     1 1 1 a   c c c c c c             d d d                  j j j
+       const finalBinary = '111'+ a+(comp(COMP)??"000000")+ (dest(DEST)??"000") + (jump(JMP)??"000")
        return finalBinary
     }
 }
