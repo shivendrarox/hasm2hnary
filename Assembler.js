@@ -9,16 +9,27 @@ import  lineByLine from 'n-readlines';
 
 let line;
 let lineNumber = 0;
-const liner = new lineByLine('./add/Add.asm');
-var stream = fs.createWriteStream("./add/Add.txt", {flags:'a'});
+const liner = new lineByLine('./max/Max.asm');
+var stream = fs.createWriteStream("./max/Max.txt", {flags:'a'});
 
+const parser = new Parser()
   while (line = liner.next()) {
     //console.log('Line ' + lineNumber + ': ' + line.toString('ascii'));
     // fs.appendFile('./add/Add.txt', line+"\n", function (err) {
     //     if (err) throw err;
     //     console.log('Saved!');
     //   });
-    stream.write(line + "\n");
+    const command = line.toString('ascii').replaceAll(/\s/g,'').replaceAll(/\/\*[\s\S]*?\*\/|\/\/.*/g,'').trim();
+    if(command===''){
+        continue
+    }
+
+    parser.setCurrentCommand(command)
+    if(!parser.symbol()){
+        continue
+    }
+    const translatedBinaryStr =  parser.symbol()
+    stream.write(translatedBinaryStr + "\n");
     lineNumber++;
 }
 stream.end();

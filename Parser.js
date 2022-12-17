@@ -19,7 +19,7 @@ export class Parser{
         switch (this.commandType()) {
             case 'A_COMMAND':
             case 'C_COMMAND':
-                this.#labelROMAddrCounter
+                this.#labelROMAddrCounter+=1
                 break;
           }
 
@@ -61,6 +61,7 @@ export class Parser{
                     break;
               }
            this.#symbolTable.addEntry(saneSymbol,targetAddr)
+           return this.#symbolTable.GetAddress(saneSymbol)
         }
         
     }
